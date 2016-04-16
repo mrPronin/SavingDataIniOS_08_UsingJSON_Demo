@@ -79,12 +79,30 @@ do {
             gameDict["synopsis"] = game.synopsis
             topLevel.append(gameDict)
         }
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(topLevel, options: .PrettyPrinted)
+//        let jsonData = try NSJSONSerialization.dataWithJSONObject(topLevel, options: .PrettyPrinted)
         let fileManager = NSFileManager.defaultManager()
         let url = try fileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
         let jsonURL = url.URLByAppendingPathComponent("video_games.json")
-        print(jsonURL)
-        jsonData.writeToURL(jsonURL, atomically: true)
+//        print(jsonURL)
+//        jsonData.writeToURL(jsonURL, atomically: true)
+        let jsonReadData = NSData(contentsOfURL: jsonURL)
+        var videoGames: [VideoGame] = []
+        if let jsonReadData = jsonReadData {
+            let parsedGames = try NSJSONSerialization.JSONObjectWithData(jsonReadData, options: .MutableContainers)
+            let games = parsedGames as! [[String:AnyObject]]
+            for game in games {
+                guard let gameName = game["name"] as? String, genre = game["genre"] as? String, rating = game["rating"] as? Int, synopsis = game["synopsis"] as? String else {continue}
+                let videoGame = VideoGame()
+                videoGame.name = gameName
+                videoGame.genre = genre
+                videoGame.rating = rating
+                videoGame.synopsis = synopsis
+                videoGames.append(videoGame)
+            }
+        }
+        for game in videoGames {
+            print(game)
+        }
     }
 } catch {
     print("error: \(error)")
