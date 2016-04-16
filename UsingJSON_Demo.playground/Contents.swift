@@ -69,9 +69,22 @@ do {
         let xml = try String(contentsOfURL: xmlURL)
         let gameParser = GameParser(withXML: xml)
         let games = gameParser.parse()
+        
+        var topLevel: [AnyObject] = []
         for game in games {
-            print("game: \(game)\n")
+            var gameDict: [String : AnyObject] = [:]
+            gameDict["name"] = game.name
+            gameDict["genre"] = game.genre
+            gameDict["rating"] = NSNumber(integer: game.rating)
+            gameDict["synopsis"] = game.synopsis
+            topLevel.append(gameDict)
         }
+        let jsonData = try NSJSONSerialization.dataWithJSONObject(topLevel, options: .PrettyPrinted)
+        let fileManager = NSFileManager.defaultManager()
+        let url = try fileManager.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
+        let jsonURL = url.URLByAppendingPathComponent("video_games.json")
+        print(jsonURL)
+        jsonData.writeToURL(jsonURL, atomically: true)
     }
 } catch {
     print("error: \(error)")

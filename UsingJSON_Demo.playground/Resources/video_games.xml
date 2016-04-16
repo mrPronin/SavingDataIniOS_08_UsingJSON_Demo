@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<video_games>
+    <video_game>
+        <name>Minecraft</name>
+        <genre>Worldbuilding FPS</genre>
+        <rating>5</rating>
+        <synopsis>Build your own voxel based world while surviving against various types of baddies. Beware of creepers. </synopsis>
+    </video_game>
+    <video_game>
+        <name>Day Z</name>
+        <genre>Survival FPS</genre>
+        <rating>4</rating>
+        <synopsis>Try to survive in a post apocalytic wasteland where the zombies are the least of your problems. </synopsis>
+    </video_game>
+    <video_game>
+        <name>Infamous: Second Son</name>
+        <genre>3rd Person Super Hero</genre>
+        <rating>3</rating>
+        <synopsis>Play as a superhero where morality is as much of a gameplay element as stopping the bad guys. Fun but has a "been there, done that" feel to it."</synopsis>
+    </video_game>
+    <video_game>
+        <name>Dance Central</name>
+        <genre>Kinect Wibble Wobble</genre>
+        <rating>2</rating>
+        <synopsis>Dance you like you have a spider crawling down your shirt. Can be fun until your knee blows out.</synopsis>
+    </video_game>
+    <video_game>
+        <name>Dungeon Keeper iOS</name>
+        <genre>DLC Collecting</genre>
+        <rating>1</rating>
+        <synopsis>A classic remake that replaces clever gameplay with in app purchases.</synopsis>
+    </video_game>
+</video_games>
